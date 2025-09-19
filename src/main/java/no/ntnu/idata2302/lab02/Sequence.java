@@ -89,8 +89,17 @@ public class Sequence {
      * @param index the index that must be removed.
      */
     public void remove(int index) {
-        // TODO: Implement
-        throw new RuntimeException("Not yet implemented.");
+        if (length < 1) {
+            throw new IllegalArgumentException("Sequence is empty!");
+        }
+        for (int i = index-1; i < length-1; i++) {
+            items[i] = get(i+2);
+        }
+        items[length-1] = 0;
+        length -= 1;
+        if (length <= capacity/4) {
+            capacity /= 2;
+        }
     }
 
     /**
