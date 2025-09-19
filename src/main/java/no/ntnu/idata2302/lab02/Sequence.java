@@ -110,8 +110,12 @@ public class Sequence {
      * @return an
      */
     public int search(int item) {
-        // TODO: Implement
-        throw new RuntimeException("Not yet implemented.");
+        for (int i = 0; i <= length; i++) {
+            if (item == items[i]) {
+                return i+1;
+            }
+        }
+        return 0;
     }
 
     /**
