@@ -7,6 +7,8 @@
  */
 package no.ntnu.idata2302.lab02;
 
+import java.util.Arrays;
+
 /**
  * Implement the Sequence ADT from Lecture 2.2
  *
@@ -70,8 +72,15 @@ public class Sequence {
      * @param item the item that must be inserted
      */
     public void insert(int item, int index) {
-        // TODO: Implement
-        throw new RuntimeException("Not yet implemented.");
+        if (length >= capacity) {
+            capacity *= 2;
+            items = Arrays.copyOf(items, capacity);
+        }
+        for (int i = length; i >= index; i--) {
+            items[i] = get(i);
+        }
+        items[index-1] = item;
+        length = length+1;
     }
 
     /**
