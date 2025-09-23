@@ -125,6 +125,9 @@ public class Sequence {
      *         second the maximum
      */
     public int[] extrema() {
+        if (length < 1) {
+            throw new IllegalStateException("Can not use empty sequence!");
+        }
         int smallest = items[0];
         int max = items[0];
         for (int i = 1; i < length; i++) {
@@ -144,8 +147,19 @@ public class Sequence {
      * @return true if the sequence has the the same items at multiple indices
      */
     public boolean hasDuplicate() {
-        // TODO: Implement
-        throw new RuntimeException("Not yet implemented.");
+        int[] itemsUniqueNumbers = new int[capacity];
+        int uniqueCount = 0;
+
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < uniqueCount; j++) {
+                if (itemsUniqueNumbers[j] == items[i]) {
+                    return true;
+                }
+            }
+            itemsUniqueNumbers[uniqueCount++] = items[i];
+        }
+
+        return false;
     }
 
 
