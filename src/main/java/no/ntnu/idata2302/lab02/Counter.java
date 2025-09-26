@@ -47,7 +47,7 @@ public class Counter {
         if (digitCount <= 0)
             throw new IllegalArgumentException("The number of digits must be positive");
         assert alphabet != null && !alphabet.isEmpty()
-            : "null or '' are not a valid alphabet";
+                : "null or '' are not a valid alphabet";
 
         var digits = new DigitDisplay[digitCount];
         for (int i = 0; i < digitCount; i++) {
@@ -66,8 +66,13 @@ public class Counter {
      * Increment the counter by one
      */
     public void increment() {
-        // TODO: Implement
-        throw new RuntimeException("Not yet implemented.");
+        for (int i = 0; i < digits.length; i++) {
+            digits[i].next();
+            if (!digits[i].isZero()) {
+                // finished
+                return;
+            }
+        }
     }
 
     /**
