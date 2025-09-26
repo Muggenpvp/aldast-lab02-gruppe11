@@ -147,19 +147,14 @@ public class Sequence {
      * @return true if the sequence has the the same items at multiple indices
      */
     public boolean hasDuplicate() {
-        int[] itemsUniqueNumbers = new int[capacity];
-        int uniqueCount = 0;
-
         for (int i = 0; i < length; i++) {
-            for (int j = 0; j < uniqueCount; j++) {
-                if (itemsUniqueNumbers[j] == items[i]) {
-                    return true;
+            for (int j = i + 1; j < length; j++) {
+                if (items[i] == items[j]) {
+                    return true; // duplicate found
                 }
             }
-            itemsUniqueNumbers[uniqueCount++] = items[i];
         }
-
-        return false;
+        return false; // no duplicates
     }
 
 
